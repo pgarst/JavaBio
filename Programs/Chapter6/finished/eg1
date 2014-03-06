@@ -1,0 +1,16 @@
+
+maxca  4.0
+maxk  8
+maxleak  2
+caequilibrium  120
+kequilibrium  -84
+leakequilibrium  -60
+level  30
+start  5.0
+end  40.0
+cav1  -1.2
+cav2  18
+kv1  12
+kv2  17.4
+phi  0.06666
+capacitance  25

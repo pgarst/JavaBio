@@ -1,0 +1,5 @@
+
+java -jar train.jar trimmuno.conf primmuno.mod
+java -jar train.jar trzf.conf przf.mod
+java -jar train.jar trhsp.conf prhsp.mod
+java -jar compall.jar cprot

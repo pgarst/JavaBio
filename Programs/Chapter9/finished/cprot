@@ -1,0 +1,6 @@
+model prhsp.mod
+model primmuno.mod
+model przf.mod
+protein ../../../Data/Sequence/hsp.fasta
+protein ../../../Data/Sequence/immunoglobulin.fasta
+protein ../../../Data/Sequence/zincfinger.fasta

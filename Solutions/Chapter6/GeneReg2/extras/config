@@ -1,0 +1,17 @@
+# Configuration for feed forward loop example
+gene X 4.0 2.0
+gene Y 4.0 2.0
+gene Z 4.0 2.0
+
+activate X Y 1.0
+activate X Z 1.0
+activate Y Z 1.0
+
+function Z and
+concentration X 2.0
+
+signal Y on 0
+signal X on 0
+signal X off 15
+
+end 30

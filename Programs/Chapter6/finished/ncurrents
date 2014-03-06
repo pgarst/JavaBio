@@ -1,0 +1,2 @@
+java -jar ../Neuron/dist/Neuron.jar eg2a > temp
+java -jar Graphit.jar git temp
