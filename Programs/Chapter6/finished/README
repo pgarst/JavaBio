@@ -5,9 +5,10 @@ Do a clean and build there.
 Then run
 
 	"ncurrents" to see the ionic currents in the neuron model
-	"npotential eg2" to see the membrane potential in the neuron model
+	"runml" to see the membrane potential in the neuron model
 
 in a command window in this directory.
 These are Mac/Linux scripts; you may need to adjust them a bit for Windows.
+Edit params to change the details for the runml script.
 Try different configuration files for the potential case.
 You can try modifications of these configuration files to see how the work.

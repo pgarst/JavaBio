@@ -1,0 +1,2 @@
+java -jar Neuron.jar params > temp
+java -jar Graphit.jar git3 temp
