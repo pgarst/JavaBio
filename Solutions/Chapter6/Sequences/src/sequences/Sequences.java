@@ -15,6 +15,10 @@
  */
 package sequences;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Collections;
 
 /**
@@ -34,36 +38,85 @@ public class Sequences {
      */
     public static void main(String[] args) {
 
-        if (args.length != 1) {
-            System.out.println("Usage: sequences filename");
+        if (args.length != 2) {
+            System.out.println("Usage: sequences (dna | protein) filename");
             System.exit(0);
         }
-
-        SequenceSet sset = null;
-
-        // See if it is a valid file of DNA sequences
+        
+        SequenceSet sset = null;       
+        BufferedReader rd = null;
+        
         try {
-            DNASet dset = new DNASet(args[0]);
-            sset = dset;
+            rd  = new BufferedReader(new FileReader(args[1]));
         }
-        catch (SequenceException e) {
-            // Just try the next molecule type
+        catch (FileNotFoundException ex) {
+            System.out.println("Unable to read file " + args[1]);
+            System.exit(0);
         }
-        if (sset == null) {
-            try {
-                ProteinSet dset = new ProteinSet(args[0]);
-                sset = dset;
-            }
-            catch (SequenceException e) {
-                System.out.println("Not a valid protein or dna file");
-                System.exit(0);
-            }
+        
+        if (args[0].equals("dna"))
+            sset    = doDna(rd);
+        else if (args[0].equals("protein"))
+            sset    = doProtein(rd);
+        else {
+            System.out.println("Usage: sequences (dna | protein) filename");
+            System.exit(0);
         }
 
         Collections.sort(sset);
 
+        // We can do this in an untyped way here, or we could do
+        // something like for (DNA dna : sset) if we know the type
+        // parameter
         for (Object s : sset)
             System.out.println(s);
+    }
+    
+    private static SequenceSet<DNA> doDna (BufferedReader rd) {
+        
+        SequenceSet<DNA>    sset    = new SequenceSet<>();   
+        String line;
+        
+        try {
+            while ((line = rd.readLine()) != null) {
+                DNA dna = new DNA(line);
+                sset.add(dna);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println("Read error");
+        }
+        catch (SequenceException ex) {
+            System.out.println("Invalid dna sequence " + ex);
+        }
+        
+        return sset;
+    }
+     
+    private static SequenceSet<Protein> doProtein (BufferedReader rd) {
+          
+        SequenceSet<Protein>    sset    = new SequenceSet<>();   
+        String line;
+        
+        try {
+            while ((line = rd.readLine()) != null) {
+                Protein p = new Protein(line);
+                sset.add(p);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println("Read error");
+        }
+        catch (SequenceException ex) {
+            System.out.println("Invalid protein sequence " + ex);
+        }
+        
+        return sset; 
+    }
+    
+    private static SequenceSet<? extends Sequence<? extends Compound>> doSequence (BufferedReader rd) {
+        
+        return new SequenceSet<DNA>();
     }
 
 }

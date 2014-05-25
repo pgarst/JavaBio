@@ -16,12 +16,29 @@
 package sequences;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author peterg
  */
-public class SequenceSet<T extends Sequence> 
+public class SequenceSet<T extends Sequence<? extends Compound>> 
     extends ArrayList<T> {
     
+    public HashMap<Compound, Integer> getHisto () {
+        
+        HashMap<Compound, Integer> map = new HashMap<>();
+        
+        for (T elem : this) {
+            for (Compound c : elem) {
+                Integer val = map.get(c);
+                if (val == null)
+                    map.put(c, 1);
+                else
+                    map.put(c, val + 1);
+            }
+        }
+        
+        return map;
+    }
 }
