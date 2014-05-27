@@ -22,8 +22,8 @@ import java.util.ArrayList;
  * @author peterg
  */
 public class Sequence<T extends Compound>
-        extends ArrayList<T>
-        implements Comparable<Sequence<T>> {
+    extends ArrayList<T>
+    implements Comparable<Sequence<T>> {
 
     @Override
     public String toString() {

@@ -45,7 +45,7 @@ public class DNABase
         basetable.put('C', new DNABase('C', "cytosine"));
         basetable.put('G', new DNABase('G', "guanine"));
         basetable.put('T', new DNABase('T', "thymine"));
-    };
+    }
     
     private DNABase (char code, String name) {
         

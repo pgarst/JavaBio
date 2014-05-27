@@ -50,7 +50,7 @@ public class AminoAcid
         aatable.put('V', new AminoAcid('V', "Valine"));
         aatable.put('W', new AminoAcid('W', "Tryptophan"));
         aatable.put('Y', new AminoAcid('Y', "Tyrosine"));
-    };
+    }
     
     private AminoAcid (char code, String name) {
         
